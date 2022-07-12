@@ -3,6 +3,7 @@ var app = angular.module("toDoApp", [])
 
 app.service("dataservice", function(){
     var todolist = [];
+    var filter = undefined;
 
     this.addData = function(data){
         todolist.unshift(data);
@@ -14,6 +15,14 @@ app.service("dataservice", function(){
 
     this.getList = function() {
         return todolist;
+    }
+
+    this.getFilter = function(){
+        return filter;
+    }
+
+    this.setFilter = function(val){
+        filter = val;
     }
 
 });

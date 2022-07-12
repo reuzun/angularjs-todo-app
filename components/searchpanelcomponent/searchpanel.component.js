@@ -1,9 +1,11 @@
 SearchPanelController.$inject = ['$scope', 'dataservice'];
 function SearchPanelController($scope, dataservice) {
-    $scope.filter = ""
+    $scope.query = "";
 
     this.filterData = function () {
-        if ($scope.filter == "") return;
+        if ($scope.query == "") return;
+        console.log($scope.query);
+        dataservice.setFilter($scope.query);
     }
 }
 
@@ -11,7 +13,7 @@ function SearchPanelController($scope, dataservice) {
 app.
     component('searchPanel', {
         template: '<div style="display:inline;">'
-            + '<input ng-change="filterData()" ng-model="filter" class="form-control" type="text" placeholder="Search..." style="width:70%; display:inline; margin-right:15px;" ng-keypress="$event.keyCode == 13 ? $ctrl.addData() : null">'
+            + '<input ng-model="query" ng-keypress="$event.keyCode == 13 ? $ctrl.filterData() : null" ng-model="filter" class="form-control" type="text" placeholder="Search..." style="width:70%; display:inline; margin-right:15px;" ng-keypress="$event.keyCode == 13 ? $ctrl.addData() : null">'
             + '</div>',
         controller: SearchPanelController
     });
