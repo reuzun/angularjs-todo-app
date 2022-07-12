@@ -1,19 +1,17 @@
-AddTaskPanelController.$inject = ['$scope', 'dataservice'];
-function AddTaskPanelController($scope, dataservice) {
-  $scope.task = "";
-  this.addData = function(){
-    if($scope.data == "") return;
-    dataservice.addData($scope.task)
-    $scope.task = "";
-  }
+SearchPanelController.$inject = ['$scope', 'dataservice'];
+function SearchPanelController($scope, dataservice) {
+    $scope.filter = ""
+
+    this.filterData = function () {
+        if ($scope.filter == "") return;
+    }
 }
 
 
 app.
-  component('addTaskPanel', {
-    template: '<div style="display:inline;">'
-        + '<input ng-model="task" class="form-control" type="text" placeholder="Task..." style="width:70%; display:inline; margin-right:15px;" ng-keypress="$event.keyCode == 13 ? $ctrl.addData() : null">'
-        + '<button class="btn btn-secondary" style="vertical-align: initial; display:inline;" ng-click="$ctrl.addData()">Add New Task</button>'
-        + '</div>',
-    controller: AddTaskPanelController
-  });
+    component('searchPanel', {
+        template: '<div style="display:inline;">'
+            + '<input ng-change="filterData()" ng-model="filter" class="form-control" type="text" placeholder="Search..." style="width:70%; display:inline; margin-right:15px;" ng-keypress="$event.keyCode == 13 ? $ctrl.addData() : null">'
+            + '</div>',
+        controller: SearchPanelController
+    });

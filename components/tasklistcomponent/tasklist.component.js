@@ -1,6 +1,7 @@
 TaskListController.$inject = ['dataservice'];
 function TaskListController(dataservice) {
   this.data = dataservice.getList();
+  // this.filter = dataservice.getFilter();
   this.removeData = function(indx){
     dataservice.removeIndex(indx)
   }
