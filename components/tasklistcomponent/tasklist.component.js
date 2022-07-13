@@ -11,6 +11,6 @@ function TaskListController($scope, dataservice) {
 
 app.
   component('taskList', {
-    template: '<ul><li ng-repeat="x in $ctrl.data track by $index">{{x | filter:dataservice.getFilter();}}<button class="btn btn-danger" style="background-color:transparent;border:none;color:red;" ng-click="$ctrl.removeData($index)">X</button></li></ul>',
+    template: '<ul><li ng-repeat="x in $ctrl.data | filter:dataservice.getFilter() track by $index">{{x}}<button class="btn btn-danger" style="background-color:transparent;border:none;color:red;" ng-click="$ctrl.removeData($index)">X</button></li></ul>',
     controller: TaskListController
   });
